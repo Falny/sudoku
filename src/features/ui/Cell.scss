@@ -1,0 +1,16 @@
+.cell-list {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(3, 40px);
+  border: 1px solid #25305e;
+
+  .cell-item {
+    border: 1px solid #25305e;
+    cursor: pointer;
+    background-color: #fff;
+  }
+
+  .active-cell {
+    background-color: #cdcdcd;
+  }
+}

@@ -1,0 +1,11 @@
+@use "../../app/App.scss" as *;
+
+.edit {
+  @include colorEdit;
+}
+
+.footer-text {
+  @media (max-width: 405px) {
+    display: none;
+  }
+}

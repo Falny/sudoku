@@ -1,0 +1,175 @@
+@use '../../app/App.scss' as *;
+
+@keyframes win {
+	0% {
+		background-color: rgba(138, 208, 255, 0.1);
+	}
+	20% {
+		background-color: rgba(138, 208, 255, 0.4);
+	}
+	50% {
+		background-color: rgba(138, 208, 255, 0.8);
+	}
+	80% {
+		background-color: rgba(138, 208, 255, 0.4);
+	}
+	100% {
+		background-color: rgba(138, 208, 255, 0);
+	}
+}
+
+.desk {
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $main-color;
+	position: relative;
+
+	.block-desk {
+		display: flex;
+		border-bottom: 1px solid $main-color;
+		border-left: 1px solid $main-color;
+
+		&:nth-child(1) {
+			border-top: 1px solid $main-color;
+		}
+
+		&:nth-child(3),
+		&:nth-child(6),
+		&:nth-child(9) {
+			border-bottom: 2px solid $main-color;
+		}
+
+		.item-desk {
+			outline: none;
+			cursor: pointer;
+			background-color: #fff;
+			width: 40px;
+			height: 40px;
+			border-right: 1px solid $main-color;
+			font-size: 1.3rem;
+
+			@media (max-width: 405px) {
+				width: 30px;
+				height: 30px;
+			}
+
+			@media (max-width: 325px) {
+				width: 25px;
+				height: 25px;
+				font-size: 1rem;
+			}
+
+			&:nth-child(3),
+			&:nth-child(6),
+			&:nth-child(9) {
+				border-right: 2px solid $main-color;
+			}
+
+			&:focus {
+				background-color: rgba(138, 208, 255, 0.6) !important;
+			}
+		}
+		.win {
+			animation: win 3s linear infinite !important;
+		}
+
+		// .active-cell {
+		//   background-color: rgba(67, 162, 226, 0.6);
+		// }
+
+		.desk-highlight {
+			background-color: rgba(67, 162, 226, 0.1);
+		}
+
+		.desk-active-digit {
+			background-color: rgba(138, 208, 255, 0.4);
+		}
+
+		.correct-digit {
+			color: #272861;
+		}
+
+		.incorrect-digit {
+			color: #7d1414;
+		}
+
+		.highlight-correct-digit {
+			animation: correct_digit linear 2s forwards;
+		}
+
+		@keyframes correct_digit {
+			0% {
+				background-color: rgba(138, 208, 255, 0.1);
+			}
+			20% {
+				background-color: rgba(138, 208, 255, 0.4);
+			}
+			50% {
+				background-color: rgba(138, 208, 255, 0.8);
+			}
+			80% {
+				background-color: rgba(138, 208, 255, 0.4);
+			}
+			100% {
+				background-color: rgba(138, 208, 255, 0);
+			}
+		}
+	}
+}
+
+.notes {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px;
+	z-index: 10;
+	background-color: transparent;
+	border: 1px solid transparent;
+
+	.notes-item {
+		display: flex;
+		border-bottom: 1px solid transparent;
+		border-left: 1px solid transparent;
+
+		&:nth-child(1) {
+			border-top: 1px solid transparent;
+		}
+
+		&:nth-child(3),
+		&:nth-child(6),
+		&:nth-child(9) {
+			border-bottom: 2px solid transparent;
+		}
+
+		.notes-item_inside {
+			width: 40px;
+			height: 40px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			background-color: transparent;
+			font-size: 0.73rem;
+			@include colorEdit;
+
+			@media (max-width: 405px) {
+				width: 30px;
+				height: 30px;
+				font-size: 0.57rem;
+			}
+
+			@media (max-width: 325px) {
+				width: 25px;
+				height: 25px;
+				font-size: 0.45rem;
+			}
+		}
+
+		.notes-active-digit {
+			color: #232586;
+			font-weight: 700;
+		}
+	}
+}
